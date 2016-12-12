@@ -1,0 +1,19 @@
+products {
+    li {
+        line-height: 30px;
+        background-color: grey;
+        border-radius: 5px;
+        margin: 0 20px;
+        cursor: pointer;
+    }
+
+    button {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}
+
+.selected {
+    background-color: #286090 !important;
+}
+
