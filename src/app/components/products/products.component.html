@@ -1,9 +1,13 @@
-<h1 class="test">{{$ctrl.productsTitle}}</h1>
-
-<ul class="products list-inline">
-	<li ng-repeat="product in $ctrl.products" ng-click="$ctrl.selectProduct(product)" 
-        ng-class="{selected: product==$ctrl.selectedProduct}">{{product.title}}</li>
-</ul>
-<button type="button" class="btn btn-danger go-back" ng-click="$ctrl.goBack()">Go back</button>
-
-<product-item selected-product="$ctrl.selectedProduct" comments="$ctrl.comments"></product-item>
+<div class="products-wrapper">
+	<div class="container">
+		<ul class="products list-inline">
+			<li ng-repeat="product in $ctrl.products" ng-click="$ctrl.selectProduct(product)"
+		        ng-class="{selected: product==$ctrl.selectedProduct}">
+				<div class="product-image-wrapper"><img src="/app/images/{{ product.img }}" class="img-responsive" alt=""></div>
+				<p>{{product.title}}</p>
+			</li>
+		</ul>
+		<button type="button" class="btn btn-danger go-back" ng-click="$ctrl.goBack()">Go back</button>
+		<!-- <product-item selected-product="$ctrl.selectedProduct" comments="$ctrl.comments"></product-item> -->
+	</div>
+</div>

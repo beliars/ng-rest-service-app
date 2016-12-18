@@ -1,12 +1,11 @@
 import { ApiService } from '../../services/api.service';
 
-export default class UserDetailController {  
-   
-    constructor(ApiService, $state) {    
+export default class UserDetailController {
+
+    constructor(ApiService, $state, $stateParams) {
         "ngInject";
         this.apiService = ApiService;
         this.$state = $state;
-        this.productsTitle = 'Products Component Title';
     }
 
     $onInit() {
@@ -23,16 +22,20 @@ export default class UserDetailController {
     selectProduct(product) {
         this.selectedProduct = product;
         console.log(product.id);
-        this.getComments(product.id);
+        this.$state.go('detail', {id: product.id});
     }
 
-    getComments(id) {
-        this.apiService.getComments(id).then(comments => {
-            console.log(comments);
-            this.comments = comments;
-            });
+    unSelectProduct() {
+        this.selectedProduct = false;
     }
 
-    
+    // getComments(id) {
+    //     this.apiService.getComments(id).then(comments => {
+    //         console.log(comments);
+    //         this.comments = comments;
+    //         });
+    // }
+
+
 
 }

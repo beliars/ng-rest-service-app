@@ -13,6 +13,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('products', {
       url: '/products',
       component: 'products'
+    })
+    .state('detail', {
+      url: '/detail/:id',
+      component: 'productItem'
     });
 }
-

@@ -8,7 +8,7 @@ export class ApiService {
   }
 
 
-  
+
   getProducts() {
     	return this.$http.get(this.apiUrl + 'products/')
         .then(res => res)

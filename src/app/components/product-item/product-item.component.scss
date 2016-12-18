@@ -1,0 +1,120 @@
+product-item {
+
+    .container {
+        margin-top: 25px;
+
+        h3 {
+            line-height: 35px;
+            border: 1px solid transparent;
+            background-color: #ff5722;
+            border-radius: 2px;
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            color: #fff;
+            padding-left: 20px;
+
+            &:first-child {
+                text-transform: capitalize;
+            }
+
+            &:last-child {
+                margin-top: 35px;
+            }
+
+        }
+
+        .product-image-wrapper {
+            text-align: center;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+
+            img {
+                display: inline-block;
+                padding: 25px;
+            }
+        }
+
+        .product-description {
+
+            border: 1px solid transparent;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            min-height: 100px;
+
+            p {
+                font-size: 20px;
+                line-height: 30px;
+                padding-left: 20px;
+            }
+        }
+
+        form {
+
+            border: 1px solid transparent;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+
+            div {
+                margin: 15px;
+            }
+
+            textarea {
+                resize: vertical;
+            }
+
+            button {
+                margin-top: 15px;
+                padding: 6px 25px;
+            }
+
+
+        }
+
+        li {
+            border: 1px solid transparent;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+
+            p {
+
+                &:first-child {
+                    font-size: 115%;
+                }
+
+                &:last-child {
+                    font-size: 80%;
+                    margin-bottom: 0;
+                    text-align: right;
+                }
+
+                &:nth-child(2) {
+                    font-size: 90%;
+                    margin-bottom: 0;
+                }
+            }
+
+            div {
+                margin: 10px 5px 5px 10px;
+            }
+        }
+    }
+
+}

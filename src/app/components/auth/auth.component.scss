@@ -1,0 +1,34 @@
+auth {
+
+    .auth-wrapper {
+
+        background-color: #303f9f;
+
+        h1 {
+            color: #fff;
+        }
+
+        form {
+            border: 1px solid #fff;
+            padding: 40px;
+            border-radius: 3px;
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(255,255,255, 0.75);
+            -moz-box-shadow:    1px 1px 10px 0px rgba(255,255,255, 0.75);
+            box-shadow:         1px 1px 10px 0px rgba(255,255,255, 0.75);
+            color: #fff;
+        }
+
+        .skip-button {
+            text-align: right;
+            padding-right: 0;
+            margin-top: 35px;
+            margin-bottom: 25px;
+
+            a {
+                width: 150px;
+            }
+        }
+    }
+
+
+}
