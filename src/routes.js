@@ -16,6 +16,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('detail', {
       url: '/detail/:id',
-      component: 'productItem'
+      component: 'productItem',
+      params: {'user': {}}
     });
 }

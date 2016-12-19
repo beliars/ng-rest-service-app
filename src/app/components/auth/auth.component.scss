@@ -1,14 +1,15 @@
 auth {
-
+    
     .auth-wrapper {
 
         background-color: #303f9f;
 
-        h1 {
+        h1, h2 {
             color: #fff;
         }
 
         form {
+            position: relative;
             border: 1px solid #fff;
             padding: 40px;
             border-radius: 3px;
@@ -16,6 +17,18 @@ auth {
             -moz-box-shadow:    1px 1px 10px 0px rgba(255,255,255, 0.75);
             box-shadow:         1px 1px 10px 0px rgba(255,255,255, 0.75);
             color: #fff;
+
+            .success-message {
+                position: absolute;
+                color: #5cb85c;
+                bottom: 1px;
+            }
+
+            .fail-message {
+                position: absolute;
+                color: #fd5151;
+                bottom: 1px;
+            }
         }
 
         .skip-button {

@@ -6,36 +6,43 @@ export default class UserDetailController {
         "ngInject";
         this.apiService = ApiService;
         this.$state = $state;
+        this.loggedUser = {
+            username: '',
+            token: ''
+        }
     }
 
     $onInit() {
         this.apiService.getProducts().then(products => {
-            console.log(products.data);
             this.products = products.data;
         });
-    }
 
-    goBack() {
-        this.$state.go('auth');
+         this.getLoggedUserData();
     }
 
     selectProduct(product) {
         this.selectedProduct = product;
-        console.log(product.id);
-        this.$state.go('detail', {id: product.id});
+        this.$state.go('detail', {id: product.id, user: this.loggedUser});
     }
 
     unSelectProduct() {
         this.selectedProduct = false;
     }
 
-    // getComments(id) {
-    //     this.apiService.getComments(id).then(comments => {
-    //         console.log(comments);
-    //         this.comments = comments;
-    //         });
-    // }
+    getLoggedUserData() {
+        this.loggedUser = this.apiService.getLoggedUser();
+    }
 
+    goBack() {
+        this.$state.go('auth');
+    }
 
+    logout() {
+        setTimeout(() => {
+            this.loggedUser.username = '';
+            this.loggedUser.token = '';
+            this.$state.go('auth');
+        }, 1000);
+    }
 
 }

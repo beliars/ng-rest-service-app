@@ -1,16 +1,33 @@
 rest-app {
 
-    .header-wrapper {
-        background-color: #3f51b5;
+    .content-wrap {
 
-        header {
-            margin: 15px 0;
+        min-height: calc(100vh - 70px);
+        
+        .header-wrapper {
+            background-color: #3f51b5;
 
-            h1 {
-                font-family: 'Open Sans', sans-serif;
-                color: #fff;
-                margin: 0;
+            header {
+                margin: 15px 0;
+
+                h1 {
+                    font-family: 'Open Sans', sans-serif;
+                    color: #fff;
+                    margin: 0;
+                }
             }
+        }
+    }
+
+    footer {
+        height: 70px;
+        background-color: #374147;
+
+        p {
+            line-height: 70px;
+            color: #fff;
+            float: right;
+            margin-right: 50px;
         }
     }
 

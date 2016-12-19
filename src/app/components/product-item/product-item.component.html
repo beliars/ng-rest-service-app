@@ -1,4 +1,5 @@
 <div class="container">
+    <p ng-if="$ctrl.loggedUser.username" class="logged-user">Hello, {{ $ctrl.loggedUser.username }}<i class="fa fa-sign-out" title="Logout" ng-click="$ctrl.logout()"></i></p>
     <div class="row">
         <div class="col-sm-6">
             <h3>{{ $ctrl.selectedProduct.title }}</h3>
@@ -13,10 +14,24 @@
         </div>
         <div class="col-sm-6">
             <h3 class="text">Leave Your review</h3>
-            <form novalidate>
-                <div>
-                    <textarea class="form-control" name="comment" rows="3" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send</button>
+            <form class="commentForm" name="commentForm" ng-submit="$ctrl.onSubmit(commentForm)" novalidate>
+                <div class="textarea-wrapper">
+                    <div class="stars">
+            			<input class="star star-5" id="star-5" type="radio" name="star" value="5" ng-model="$ctrl.commentData.rate" required/>
+            			<label class="star star-5" for="star-5"></label>
+            			<input class="star star-4" id="star-4" type="radio" name="star" value="4" ng-model="$ctrl.commentData.rate"/>
+            			<label class="star star-4" for="star-4"></label>
+            			<input class="star star-3" id="star-3" type="radio" name="star" value="3" ng-model="$ctrl.commentData.rate">
+            			<label class="star star-3" for="star-3"></label>
+            			<input class="star star-2" id="star-2" type="radio" name="star" value="2" ng-model="$ctrl.commentData.rate">
+            			<label class="star star-2" for="star-2"></label>
+            			<input class="star star-1" id="star-1" type="radio" name="star" value="1" ng-model="$ctrl.commentData.rate">
+            			<label class="star star-1" for="star-1"></label>
+            		</div>
+                    <textarea class="form-control" name="comment" rows="3" ng-model="$ctrl.commentData.text" required></textarea>
+                    <p class="error" ng-if="$ctrl.validateError">Select rating star and leave Your comment.</p>
+		            <p class="error" ng-if="$ctrl.authError">You should sign in first. <a ng-click="$ctrl.logout()">To Auth page</a></p>
+                    <button type="submit" class="btn btn-success">Send</button>
                 </div>
             </form>
             <h3 class="text">User's reviews</h3>

@@ -9,21 +9,33 @@ products {
             color: red;
         }
 
+        .logged-user {
+            color: #fff;
+            position: absolute;
+            top: 24px;
+            right: 24px;
+
+            i {
+                margin-left: 6px;
+                cursor: pointer;
+                vertical-align: middle;
+            }
+        }
+
         ul {
 
             margin-top: 25px;
 
             li {
                 background-color: #5cb85c;
-                // min-height: 235px;
                 max-height: 235px;
                 color: #fff;
                 border-radius: 3px;
                 margin: 0 20px;
                 text-align: center;
                 cursor: pointer;
-                max-width: 150px;
                 text-transform: capitalize;
+                width: 150px;
 
                 &:hover {
                     // background-color: #00695C;
@@ -43,11 +55,12 @@ products {
                     -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
                     box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
                     max-width: 150px;
+                    height: 160px;
                     margin: 15px;
 
                     img {
                         display: inline-block;
-                        padding: 20px;
+                        padding: 15px 20px;
                     }
                 }
             }

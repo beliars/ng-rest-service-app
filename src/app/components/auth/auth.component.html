@@ -1,31 +1,36 @@
 <div class="auth-wrapper">
     <div class="container">
         <div class="row">
-            <h1 class="col-sm-offset-1">{{$ctrl.heading}}</h1>
-            <div class="col-sm-6" id="login">
-                <form>
+            <div class="col-sm-6">
+                <h2 class="col-sm-offset-1">Log in</h2>
+                <form class="loginForm" name="loginForm" ng-submit="$ctrl.onSubmitLogin(loginForm)">
                 	<div class="form-group">
                 		<label for="username">Email address</label>
-                		<input type="text" name="username" class="form-control" id="log_username" placeholder="Username" minlength="2" maxlength="16" required>
+                		<input type="text" name="username" class="form-control" placeholder="Username" ng-model="$ctrl.loginData.username" minlength="2" maxlength="16" required>
                 	</div>
                 	<div class="form-group">
                 		<label for="password">Password</label>
-                		<input type="password" name="password" class="form-control" id="log_password" placeholder="Password" minlength="3" maxlength="16" required>
+                		<input type="password" name="password" class="form-control" placeholder="Password" ng-model="$ctrl.loginData.password" minlength="3" maxlength="16" required>
                 	</div>
                     <button type="submit" class="btn btn-success">Sign In</button>
+                    <p ng-if="$ctrl.loginSuccessMessage" class="success-message">{{ $ctrl.loginSuccessMessage }}</p>
+                    <p ng-if="$ctrl.loginFailMessage" class="fail-message">{{ $ctrl.loginFailMessage }}</p>
                 </form>
             </div>
-            <div class="col-sm-6" id="register">
-                <form>
+            <div class="col-sm-6">
+                <h2 class="col-sm-offset-1">Register</h1>
+                <form class="regForm" name="regForm" ng-submit="$ctrl.onSubmitReg(regForm)">
                 	<div class="form-group">
                 		<label for="username">Email address</label>
-                		<input type="text" name="username" class="form-control" id="reg_username" placeholder="Username" minlength="2" maxlength="16" required>
+                		<input type="text" name="username" class="form-control" placeholder="Username" ng-model="$ctrl.regData.username" minlength="2" maxlength="16" required>
                 	</div>
                 	<div class="form-group">
                 		<label for="password">Password</label>
-                		<input type="password" name="password" class="form-control" id="reg_password" placeholder="Password" minlength="3" maxlength="16" required>
+                		<input type="password" name="password" class="form-control" placeholder="Password" ng-model="$ctrl.regData.password" minlength="3" maxlength="16" required>
                 	</div>
                 	<button type="submit" class="btn btn-primary">Sign Up</button>
+                    <p ng-if="$ctrl.regSuccessMessage" class="success-message">{{ $ctrl.regSuccessMessage }}</p>
+                    <p ng-if="$ctrl.regFailMessage" class="fail-message">{{ $ctrl.regFailMessage }}</p>
                 </form>
             </div>
         </div>
