@@ -1,5 +1,11 @@
+@mixin shadow {
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 0.4);
+    -moz-box-shadow:    1px 1px 10px 0px rgba(255, 255, 255, 0.4);
+    box-shadow:         1px 1px 10px 0px rgba(255, 255, 255, 0.4);
+}
+
 auth {
-    
+
     .auth-wrapper {
 
         background-color: #303f9f;
@@ -13,9 +19,7 @@ auth {
             border: 1px solid #fff;
             padding: 40px;
             border-radius: 3px;
-            -webkit-box-shadow: 1px 1px 10px 0px rgba(255,255,255, 0.75);
-            -moz-box-shadow:    1px 1px 10px 0px rgba(255,255,255, 0.75);
-            box-shadow:         1px 1px 10px 0px rgba(255,255,255, 0.75);
+            @include shadow;
             color: #fff;
 
             .success-message {

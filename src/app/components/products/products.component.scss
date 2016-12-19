@@ -1,3 +1,9 @@
+@mixin shadow {
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 0.4);
+    -moz-box-shadow:    1px 1px 10px 0px rgba(255, 255, 255, 0.4);
+    box-shadow:         1px 1px 10px 0px rgba(255, 255, 255, 0.4);
+}
+
 products {
 
     .products-wrapper {
@@ -27,8 +33,10 @@ products {
             margin-top: 25px;
 
             li {
-                background-color: #5cb85c;
+                // background-color: #5cb85c;
+                background-color: #ff5722;
                 max-height: 235px;
+                font-size: 16px;
                 color: #fff;
                 border-radius: 3px;
                 margin: 0 20px;
@@ -38,11 +46,9 @@ products {
                 width: 150px;
 
                 &:hover {
-                    // background-color: #00695C;
-                    background-color: #15874e;
-                    -webkit-box-shadow: 2px 2px 10px 0px rgba(50, 50, 50, 0.75);
-                    -moz-box-shadow:    2px 2px 10px 0px rgba(50, 50, 50, 0.75);
-                    box-shadow:         2px 2px 10px 0px rgba(255, 255, 255, 0.75);
+                    // background-color: #15874e;
+                    background-color: #ca451b;
+                    @include shadow;
                 }
 
                 .product-image-wrapper {
@@ -51,9 +57,9 @@ products {
                     border-radius: 2px;
                     margin-bottom: 15px;
                     background-color: #fff;
-                    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.75);
-                    -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.75);
-                    box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.75);
+                    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.4);
+                    -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.4);
+                    box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.4);
                     max-width: 150px;
                     height: 160px;
                     margin: 15px;
@@ -75,8 +81,8 @@ products {
 
     .selected {
         background-color: #15874e!important;
-        -webkit-box-shadow: 2px 2px 10px 0px rgba(50, 50, 50, 0.75);
-        -moz-box-shadow:    2px 2px 10px 0px rgba(50, 50, 50, 0.75);
-        box-shadow:         2px 2px 10px 0px rgba(255, 255, 255, 0.75);
+        -webkit-box-shadow: 2px 2px 10px 0px rgba(50, 50, 50, 0.4);
+        -moz-box-shadow:    2px 2px 10px 0px rgba(50, 50, 50, 0.4);
+        box-shadow:         2px 2px 10px 0px rgba(255, 255, 255, 0.4);
     }
 }
