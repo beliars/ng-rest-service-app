@@ -9,6 +9,10 @@ products {
     .products-wrapper {
         background-color: #303f9f;
 
+        .container {
+            position: relative;
+        }
+
         h1 {
             margin-bottom: 20px;
             font-family: 'Open Sans', sans-serif;
@@ -18,13 +22,21 @@ products {
         .logged-user {
             color: #fff;
             position: absolute;
-            top: 20px;
+            top: -50px;
             right: 24px;
 
-            i {
+            i.logout {
                 margin-left: 6px;
                 cursor: pointer;
                 vertical-align: middle;
+            }
+
+            i.cart {
+                display: block;
+                margin: 0;
+                text-align: center;
+                font-size: 22px;
+                cursor: pointer;
             }
         }
 

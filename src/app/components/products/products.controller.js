@@ -13,11 +13,8 @@ export default class UserDetailController {
     }
 
     $onInit() {
-        this.apiService.getProducts().then(products => {
-            this.products = products.data;
-        });
-
-         this.getLoggedUserData();
+        this.getProducts();
+        this.getLoggedUserData();
     }
 
     selectProduct(product) {
@@ -27,6 +24,12 @@ export default class UserDetailController {
 
     unSelectProduct() {
         this.selectedProduct = false;
+    }
+
+    getProducts() {
+        this.apiService.getProducts().then(products => {
+            this.products = products.data;
+        });
     }
 
     getLoggedUserData() {

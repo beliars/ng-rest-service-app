@@ -1,10 +1,16 @@
 <div class="container">
-    <p ng-if="$ctrl.loggedUser.username" class="logged-user">Hello, {{ $ctrl.loggedUser.username }}<i class="fa fa-sign-out" title="Logout" ng-click="$ctrl.logout()"></i></p>
+    <p ng-if="$ctrl.loggedUser.username" class="logged-user">Hello, {{ $ctrl.loggedUser.username }}
+        <i class="logout fa fa-sign-out" title="Logout" ng-click="$ctrl.logout()"></i>
+        <i class="cart fa fa-shopping-cart"><span></span></i>
+    </p>
     <div class="row">
         <div class="col-sm-6">
             <h3>{{ $ctrl.selectedProduct.title }}</h3>
             <div class="product-image-wrapper">
                 <img ng-src="/app/images/{{ $ctrl.selectedProduct.img }}" class="img-responsive" alt="">
+            </div>
+            <div class="to-cart-wrapper">
+                <button type="button" class="btn btn-success add-to-cart" ng-click="$ctrl.addToCart()">Add to cart</button>
             </div>
             <h3>Product description</h3>
             <div class="product-description">

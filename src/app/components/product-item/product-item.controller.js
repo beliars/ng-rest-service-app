@@ -25,6 +25,19 @@ export default class ProductItemController {
         this.apiService.getComments(this.$stateParams.id).then(comments => {
             this.comments = comments.data;
         });
+
+        /*      Попытки работы с LS
+        this.cart = localStorage.getItem('cart');
+        if (this.cart == null) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+
+        console.log('OnInit');
+        console.log(this.cart);
+        console.log(this.cart.length);
+
+        this.goodsSum = this.cart.length;
+        console.log(this.goodsSum);   */
     }
 
     onSubmit(form) {
@@ -69,6 +82,16 @@ export default class ProductItemController {
             this.loggedUser.token = '';
             this.$state.go('auth');
         }, 500);
+    }
+
+    addToCart() {
+        console.log('Adding to cart...');
+        /* Попытки работы с LS
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart.push(this.selectedProduct.id);
+        this.goodsSum = this.cart.length;
+        console.log(this.goodsSum);
+        localStorage.setItem('cart', JSON.stringify(this.cart)); */
     }
 
 }
