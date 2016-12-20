@@ -7,12 +7,11 @@
 product-item {
 
     .container {
-        margin-top: 25px;
 
         .logged-user {
             color: #fff;
             position: absolute;
-            top: 24px;
+            top: 20px;
             right: 24px;
 
             i {
@@ -149,6 +148,7 @@ product-item {
             @include shadow;
 
             p {
+                word-wrap: break-word;
 
                 &:first-child {
                     font-size: 115%;

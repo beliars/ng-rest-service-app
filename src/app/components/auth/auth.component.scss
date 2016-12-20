@@ -10,8 +10,9 @@ auth {
 
         background-color: #303f9f;
 
-        h1, h2 {
+        h2 {
             color: #fff;
+            margin-left: 30px;
         }
 
         form {
@@ -35,7 +36,7 @@ auth {
             }
         }
 
-        .skip-button {
+        .skip-button-wrapper {
             text-align: right;
             padding-right: 0;
             margin-top: 35px;

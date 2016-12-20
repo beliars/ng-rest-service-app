@@ -32,7 +32,7 @@ export default class AuthController {
 					this.regSuccessMessage = 'Registration successfull. Logging in...';
 					setTimeout(() => {
 						this.$state.go('products');
-					}, 2000);
+					}, 1000);
 				}
 				else {
 					this.regSuccessMessage = '';
@@ -48,7 +48,6 @@ export default class AuthController {
     onSubmitLogin(form) {
         if (form.$valid) {
             this.apiService.loginUser(this.loginData).then(resultData => {
-                console.log(resultData);
 
                 resultData = resultData.data;
 
@@ -58,7 +57,7 @@ export default class AuthController {
 					this.loginSuccessMessage = 'Logging in...';
 					setTimeout(() => {
 						this.$state.go('products');
-					}, 2000);
+					}, 1000);
 				}
 				else {
 					this.loginSuccessMessage = '';

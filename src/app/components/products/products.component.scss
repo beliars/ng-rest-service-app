@@ -18,7 +18,7 @@ products {
         .logged-user {
             color: #fff;
             position: absolute;
-            top: 24px;
+            top: 20px;
             right: 24px;
 
             i {
@@ -33,20 +33,18 @@ products {
             margin-top: 25px;
 
             li {
-                // background-color: #5cb85c;
                 background-color: #ff5722;
                 max-height: 235px;
                 font-size: 16px;
                 color: #fff;
                 border-radius: 3px;
-                margin: 0 20px;
+                margin: 0 20px 15px;
                 text-align: center;
                 cursor: pointer;
                 text-transform: capitalize;
                 width: 150px;
 
                 &:hover {
-                    // background-color: #15874e;
                     background-color: #ca451b;
                     @include shadow;
                 }
@@ -73,7 +71,6 @@ products {
         }
 
         button {
-            margin-top: 15px;
             margin-bottom: 20px;
 
         }

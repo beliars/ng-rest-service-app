@@ -1,9 +1,9 @@
 <div class="auth-wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2 class="col-sm-offset-1">Log in</h2>
-                <form class="loginForm" name="loginForm" ng-submit="$ctrl.onSubmitLogin(loginForm)">
+            <div class="form-wrapper col-sm-6 col-sm-push-0 col-xs-push-1 col-xs-10">
+                <h2>Log in</h2>
+                <form name="loginForm" ng-submit="$ctrl.onSubmitLogin(loginForm)">
                 	<div class="form-group">
                 		<label for="username">Email address</label>
                 		<input type="text" name="username" class="form-control" placeholder="Username" ng-model="$ctrl.loginData.username" minlength="2" maxlength="16" required>
@@ -17,9 +17,9 @@
                     <p ng-if="$ctrl.loginFailMessage" class="fail-message">{{ $ctrl.loginFailMessage }}</p>
                 </form>
             </div>
-            <div class="col-sm-6">
-                <h2 class="col-sm-offset-1">Register</h1>
-                <form class="regForm" name="regForm" ng-submit="$ctrl.onSubmitReg(regForm)">
+            <div class="form-wrapper col-sm-6 col-sm-push-0 col-xs-push-1 col-xs-10">
+                <h2>Register</h2>
+                <form name="regForm" ng-submit="$ctrl.onSubmitReg(regForm)">
                 	<div class="form-group">
                 		<label for="username">Email address</label>
                 		<input type="text" name="username" class="form-control" placeholder="Username" ng-model="$ctrl.regData.username" minlength="2" maxlength="16" required>
@@ -34,7 +34,7 @@
                 </form>
             </div>
         </div>
-        <div class="skip-button col-sm-12">
+        <div class="skip-button-wrapper col-sm-12 col-sm-push-0 col-xs-push-1 col-xs-10">
             <a href="" class="btn btn-warning" ng-click="$ctrl.skipAuth()">Skip Auth</a>
         </div>
     </div>
