@@ -8,7 +8,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('auth', {
       url: '/',
-      component: 'auth'
+      component: 'auth',
+      data: {
+          guest: true
+      }
     })
     .state('products', {
       url: '/products',
@@ -16,7 +19,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('detail', {
       url: '/detail/:id',
-      component: 'productItem',
-      params: {'user': {}}
+      component: 'productItem'
     });
 }

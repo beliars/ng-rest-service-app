@@ -3,12 +3,14 @@ export class ApiService {
         'ngInject;'
         this.$http = $http;
         this.apiUrl = 'http://smktesting.herokuapp.com/api/';
+
         this.config = {
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
         };
+
         this.loggedUser = {
             username: '',
             token: ''
@@ -16,11 +18,25 @@ export class ApiService {
     }
 
     getLoggedUser() {
-        return this.loggedUser;
+        this.loggedUser = JSON.parse(localStorage.getItem('loggedUserData'));
+        if (this.loggedUser == null) {
+            return this.loggedUser = {
+                        username: '',
+                        token: ''
+                    };
+        }
+        else return this.loggedUser;
     }
 
     getProducts() {
         return this.$http.get(this.apiUrl + 'products/')
+        .then(res => res)
+        .catch(this.handleError);
+    }
+
+    getProduct(id) {
+        console.log(id);
+        return this.$http.get(this.apiUrl + 'products/' + id)
         .then(res => res)
         .catch(this.handleError);
     }
@@ -44,6 +60,7 @@ export class ApiService {
         return this.$http.post(this.apiUrl + 'register/', data, this.config)
         .then(res => {
             this.loggedUser.token = res.data.token;
+            localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
             return res;
         })
         .catch(this.handleError);
@@ -56,6 +73,7 @@ export class ApiService {
         return this.$http.post(this.apiUrl + 'login/', data, this.config)
         .then(res => {
             this.loggedUser.token = res.data.token;
+            localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
             return res;
         })
         .catch(this.handleError);
@@ -71,7 +89,6 @@ export class ApiService {
     }
 
     clearUserData() {
-        this.loggedUser.username = '';
-        this.loggedUser.token = '';
+        localStorage.removeItem('loggedUserData');
     }
 }

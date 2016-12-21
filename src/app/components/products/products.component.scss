@@ -82,9 +82,13 @@ products {
             }
         }
 
-        button {
-            margin-bottom: 20px;
+        .to-auth-btn-wrapper {
+            text-align: right;
 
+            button {
+                margin-bottom: 20px;
+
+            }
         }
     }
 

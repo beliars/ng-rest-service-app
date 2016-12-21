@@ -13,20 +13,20 @@ export default class UserDetailController {
     }
 
     $onInit() {
-        this.getProducts();
+        this.getProductsData();
         this.getLoggedUserData();
     }
 
     selectProduct(product) {
         this.selectedProduct = product;
-        this.$state.go('detail', {id: product.id, user: this.loggedUser});
+        this.$state.go('detail', {id: product.id});
     }
 
     unSelectProduct() {
         this.selectedProduct = false;
     }
 
-    getProducts() {
+    getProductsData() {
         this.apiService.getProducts().then(products => {
             this.products = products.data;
         });
@@ -36,16 +36,11 @@ export default class UserDetailController {
         this.loggedUser = this.apiService.getLoggedUser();
     }
 
-    goBack() {
-        this.$state.go('auth');
-    }
-
     logout() {
         setTimeout(() => {
-            this.loggedUser.username = '';
-            this.loggedUser.token = '';
+            this.apiService.clearUserData();
             this.$state.go('auth');
-        }, 1000);
+        }, 500);
     }
 
 }

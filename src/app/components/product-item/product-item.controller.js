@@ -16,15 +16,14 @@ export default class ProductItemController {
     }
 
     $onInit() {
-        this.loggedUser = this.$stateParams.user;
 
-        this.apiService.getProducts().then(products => {
-            this.selectedProduct = products.data[this.$stateParams.id - 1];
-        });
+        this.getLoggedUserData();
+        this.getProductData();
+        this.getCommentsData();
 
-        this.apiService.getComments(this.$stateParams.id).then(comments => {
-            this.comments = comments.data;
-        });
+        console.log('user data from service');
+        console.log(this.loggedUser);
+
 
         /*      Попытки работы с LS
         this.cart = localStorage.getItem('cart');
@@ -38,6 +37,23 @@ export default class ProductItemController {
 
         this.goodsSum = this.cart.length;
         console.log(this.goodsSum);   */
+    }
+
+    getLoggedUserData() {
+        this.loggedUser = this.apiService.getLoggedUser();
+    }
+
+    getProductData() {
+        this.apiService.getProducts().then(products => {
+            let product = products.data.filter(product => product.id == this.$stateParams.id);
+            this.selectedProduct = product[0];
+        });
+    }
+
+    getCommentsData() {
+        this.apiService.getComments(this.$stateParams.id).then(comments => {
+            this.comments = comments.data;
+        });
     }
 
     onSubmit(form) {
@@ -68,7 +84,6 @@ export default class ProductItemController {
 					this.validateError = false;
                     return this.resultData = resultData;
                 })
-
         }
     }
 
@@ -78,8 +93,7 @@ export default class ProductItemController {
 
     logout() {
         setTimeout(() => {
-            this.loggedUser.username = '';
-            this.loggedUser.token = '';
+            this.apiService.clearUserData();
             this.$state.go('auth');
         }, 500);
     }

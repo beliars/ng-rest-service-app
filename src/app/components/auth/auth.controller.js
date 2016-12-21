@@ -7,6 +7,7 @@ export default class AuthController {
         this.$state = $state;
         this.heading = 'AuthController';
         this.apiService = ApiService;
+
         this.regData = {
             username: '',
             password: ''
@@ -22,10 +23,7 @@ export default class AuthController {
     onSubmitReg(form) {
         if (form.$valid) {
             this.apiService.regUser(this.regData).then(resultData => {
-                console.log(resultData);
-
                 resultData = resultData.data;
-
                 if (resultData.success) {
 					this.regFailMessage = '';
                     this.loginFailMessage = '';
@@ -48,9 +46,7 @@ export default class AuthController {
     onSubmitLogin(form) {
         if (form.$valid) {
             this.apiService.loginUser(this.loginData).then(resultData => {
-
                 resultData = resultData.data;
-
                 if (resultData.success) {
 					this.loginFailMessage = '';
                     this.regFailMessage = '';

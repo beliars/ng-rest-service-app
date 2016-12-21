@@ -8,12 +8,14 @@ import { ProductItemComponent } from './app/components/product-item/product-item
 
 import 'angular-ui-router';
 import routesConfig from './routes';
+import appRunConfig from './app.run';
 
 import './index.scss';
 
 angular
   .module('products-app', ['ui.router'])
   .config(routesConfig)
+  .run(appRunConfig)
   .component('restApp', AppComponent)
   .component('auth', AuthComponent)
   .component('products', ProductsComponent)
