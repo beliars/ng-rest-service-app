@@ -4,12 +4,12 @@ export class ApiService {
         this.$http = $http;
         this.apiUrl = 'http://smktesting.herokuapp.com/api/';
 
-        this.config = {
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        };
+        // this.config = {
+        //     headers : {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     }
+        // };
 
         this.loggedUser = {
             username: '',
@@ -57,7 +57,7 @@ export class ApiService {
         regData.username = regData.username.trim();
         this.loggedUser.username = regData.username;
         let data = JSON.stringify(regData);
-        return this.$http.post(this.apiUrl + 'register/', data, this.config)
+        return this.$http.post(this.apiUrl + 'register/', data)
         .then(res => {
             this.loggedUser.token = res.data.token;
             localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
@@ -70,7 +70,7 @@ export class ApiService {
         loginData.username = loginData.username.trim();
         this.loggedUser.username = loginData.username;
         let data = JSON.stringify(loginData);
-        return this.$http.post(this.apiUrl + 'login/', data, this.config)
+        return this.$http.post(this.apiUrl + 'login/', data)
         .then(res => {
             this.loggedUser.token = res.data.token;
             localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
@@ -82,8 +82,8 @@ export class ApiService {
     postComment(id, commentData, user) {
         commentData.text = commentData.text.trim();
         let data = JSON.stringify(commentData);
-        this.config.headers.Authorization = 'Token ' + user.token;
-        return this.$http.post(this.apiUrl + 'reviews/' + id, data, this.config)
+        // this.config.headers.Authorization = 'Token ' + user.token;
+        return this.$http.post(this.apiUrl + 'reviews/' + id, data)
             .then(res => res)
             .catch(this.handleError);
     }

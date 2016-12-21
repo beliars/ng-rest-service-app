@@ -9,6 +9,7 @@ import { ProductItemComponent } from './app/components/product-item/product-item
 import 'angular-ui-router';
 import routesConfig from './routes';
 import appRunConfig from './app.run';
+import { myInterceptor } from './interceptors';
 
 import './index.scss';
 
@@ -20,5 +21,9 @@ angular
   .component('auth', AuthComponent)
   .component('products', ProductsComponent)
   .component('productItem', ProductItemComponent)
+  .factory('myInterceptor', myInterceptor)
+  .config(function($httpProvider) {
+      $httpProvider.interceptors.push('myInterceptor');
+  })
   .service('ApiService', ApiService);
   // .directive('chartModalDirective', ($compile) => new ChartModalDirective($compile))

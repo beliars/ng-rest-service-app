@@ -22,13 +22,4 @@ function appRunConfig($transitions, $state, ApiService) {
             return true;
         }
     });
-
-    // $rootScope.$on('$stateChangeStart', function(e, to) {
-    //     let loggedUser = apiService.getLoggedUser();
-    //     console.log('stateChangeStart');
-    //     console.log(e);
-    //     console.log(to);
-    //     e.preventDefault();
-    //     $state.go('products');
-    // });
 }
