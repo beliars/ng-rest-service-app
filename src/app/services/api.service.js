@@ -55,10 +55,10 @@ export class ApiService {
 
     regUser(regData) {
         regData.username = regData.username.trim();
-        this.loggedUser.username = regData.username;
         let data = JSON.stringify(regData);
         return this.$http.post(this.apiUrl + 'register/', data)
         .then(res => {
+            this.loggedUser.username = regData.username;
             this.loggedUser.token = res.data.token;
             localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
             return res;
@@ -68,10 +68,10 @@ export class ApiService {
 
     loginUser(loginData) {
         loginData.username = loginData.username.trim();
-        this.loggedUser.username = loginData.username;
         let data = JSON.stringify(loginData);
         return this.$http.post(this.apiUrl + 'login/', data)
         .then(res => {
+            this.loggedUser.username = loginData.username;
             this.loggedUser.token = res.data.token;
             localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
             return res;
