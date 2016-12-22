@@ -8,7 +8,7 @@
 			<li ng-repeat="product in $ctrl.products" ng-click="$ctrl.selectProduct(product)"
 		        ng-class="{selected: product==$ctrl.selectedProduct}">
 				<div class="product-image-wrapper">
-					<img ng-src="/app/images/{{ product.img }}" class="img-responsive" alt="">
+					<img ng-src="{{$ctrl.imgUrl}}{{product.img}}" class="img-responsive" alt="">
 				</div>
 				<p>{{product.title}}</p>
 			</li>

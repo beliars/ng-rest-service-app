@@ -1,12 +1,12 @@
-import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 
 export default class AuthController {
 
-    constructor(ApiService, $state) {
+    constructor(AuthService, $state) {
         "ngInject";
         this.$state = $state;
         this.heading = 'AuthController';
-        this.apiService = ApiService;
+        this.authService = AuthService;
 
         this.regData = {
             username: '',
@@ -19,10 +19,9 @@ export default class AuthController {
         }
     }
 
-
     onSubmitReg(form) {
         if (form.$valid) {
-            this.apiService.regUser(this.regData).then(resultData => {
+            this.authService.regUser(this.regData).then(resultData => {
                 resultData = resultData.data;
                 if (resultData.success) {
 					this.regFailMessage = '';
@@ -45,7 +44,7 @@ export default class AuthController {
 
     onSubmitLogin(form) {
         if (form.$valid) {
-            this.apiService.loginUser(this.loginData).then(resultData => {
+            this.authService.loginUser(this.loginData).then(resultData => {
                 resultData = resultData.data;
                 if (resultData.success) {
 					this.loginFailMessage = '';
@@ -67,7 +66,7 @@ export default class AuthController {
     }
 
     skipAuth() {
-        this.apiService.clearUserData();
+        this.authService.clearUserData();
         this.$state.go('products');
     }
 }

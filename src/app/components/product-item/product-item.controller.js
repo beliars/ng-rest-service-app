@@ -1,12 +1,17 @@
+import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
+import { CartService } from '../../services/cart.service';
 
 export default class ProductItemController {
 
-    constructor(ApiService, $state, $stateParams) {
+    constructor(AuthService, ApiService, CartService, $state, $stateParams) {
         "ngInject";
+        this.authService = AuthService;
         this.apiService = ApiService;
+        this.cartService = CartService;
         this.$state = $state;
         this.$stateParams = $stateParams;
+        this.imgUrl = this.apiService.mainUrl + '/static/';
         this.commentData = {
             rate: '',
             text: ''
@@ -16,31 +21,20 @@ export default class ProductItemController {
     }
 
     $onInit() {
-
         this.getLoggedUserData();
         this.getProductData();
         this.getCommentsData();
+    }
 
-        console.log('user data from service');
-        console.log(this.loggedUser);
-
-
-        /*      Попытки работы с LS
-        this.cart = localStorage.getItem('cart');
-        if (this.cart == null) {
-            localStorage.setItem('cart', JSON.stringify([]));
-        }
-
-        console.log('OnInit');
-        console.log(this.cart);
-        console.log(this.cart.length);
-
-        this.goodsSum = this.cart.length;
-        console.log(this.goodsSum);   */
+    $onChanges() {
+        console.log('$onChanges');
+        this.getCartProductsListData();
+        console.log(this.productsList.length);
+        this.productsQuantity = this.productsList.length;
     }
 
     getLoggedUserData() {
-        this.loggedUser = this.apiService.getLoggedUser();
+        this.loggedUser = this.authService.getLoggedUser();
     }
 
     getProductData() {
@@ -56,34 +50,37 @@ export default class ProductItemController {
         });
     }
 
+    getCartProductsListData() {
+        this.productsList = this.cartService.getCartProductsList();
+    }
+
     onSubmit(form) {
         if (!this.loggedUser.token) {
-			this.authError = true;
-			return;
-		}
+            this.authError = true;
+            return;
+        }
 
-		if (!this.commentData.rate || !this.commentData.text) {
-				this.validateError = true;
-				return;
-			}
+        if (!this.commentData.rate || !this.commentData.text) {
+            this.validateError = true;
+            return;
+        }
 
         if (form.$valid) {
-
             this.apiService.postComment(this.selectedProduct.id, this.commentData, this.loggedUser)
-                .then(resultData => {
-                    if (resultData.data.success) {
-                        this.comments.push({
-                            created_at: Date.now(),
-                            text: this.commentData.text,
-                            rate: this.commentData.rate,
-                            created_by: {username: this.loggedUser.username}
-                        })
-                    }
-                    this.commentData.rate = '';
-					this.commentData.text = '';
-					this.validateError = false;
-                    return this.resultData = resultData;
-                })
+            .then(resultData => {
+                if (resultData.data.success) {
+                    this.comments.push({
+                        created_at: Date.now(),
+                        text: this.commentData.text,
+                        rate: this.commentData.rate,
+                        created_by: {username: this.loggedUser.username}
+                    })
+                }
+                this.commentData.rate = '';
+                this.commentData.text = '';
+                this.validateError = false;
+                return this.resultData = resultData;
+            })
         }
     }
 
@@ -93,19 +90,8 @@ export default class ProductItemController {
 
     logout() {
         setTimeout(() => {
-            this.apiService.clearUserData();
+            this.authService.clearUserData();
             this.$state.go('auth');
         }, 500);
     }
-
-    addToCart() {
-        console.log('Adding to cart...');
-        /* Попытки работы с LS
-        this.cart = JSON.parse(localStorage.getItem('cart'));
-        this.cart.push(this.selectedProduct.id);
-        this.goodsSum = this.cart.length;
-        console.log(this.goodsSum);
-        localStorage.setItem('cart', JSON.stringify(this.cart)); */
-    }
-
 }

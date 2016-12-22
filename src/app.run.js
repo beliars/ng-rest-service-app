@@ -1,24 +1,18 @@
-import { ApiService } from './app/services/api.service';
+import { AuthService } from './app/services/auth.service';
 
 export default appRunConfig;
 
-function appRunConfig($transitions, $state, ApiService) {
-    console.log('Application is running...');
-    const apiService = ApiService;
+function appRunConfig($transitions, $state, AuthService) {
+    const authService = AuthService;
 
     $transitions.onBefore({}, function($transition, state) {
-        console.log('transitions onBefore');
-        console.log($transition);
-
-        let loggedUser = apiService.getLoggedUser();
+        let loggedUser = authService.getLoggedUser();
         if (loggedUser.username && loggedUser.token) {
-            console.log('Authorized!');
             if ($transition.to().data && $transition.to().data.guest) {
                 return $state.target('products');
             }
         }
         else {
-            console.log('Not authorized!');
             return true;
         }
     });

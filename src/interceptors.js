@@ -1,11 +1,11 @@
-import { ApiService } from './app/services/api.service';
+import { ApiService } from './app/services/auth.service';
 
 export function myInterceptor($injector) {
     return {
         request: function(config) {
             if(config.url.indexOf('http://smktesting.herokuapp.com/api/') > -1) {
-                const apiService = $injector.get('ApiService');
-                let loggedUser = apiService.getLoggedUser();
+                const authService = $injector.get('AuthService');
+                let loggedUser = authService.getLoggedUser();
 
                 config.headers['Content-Type'] = 'application/json';
                 config.headers['Accept'] = 'application/json';

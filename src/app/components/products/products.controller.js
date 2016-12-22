@@ -1,11 +1,14 @@
 import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 
 export default class UserDetailController {
 
-    constructor(ApiService, $state, $stateParams) {
+    constructor(ApiService, AuthService, $state, $stateParams) {
         "ngInject";
         this.apiService = ApiService;
+        this.authService = AuthService;
         this.$state = $state;
+        this.imgUrl = this.apiService.mainUrl + '/static/';
         this.loggedUser = {
             username: '',
             token: ''
@@ -33,7 +36,7 @@ export default class UserDetailController {
     }
 
     getLoggedUserData() {
-        this.loggedUser = this.apiService.getLoggedUser();
+        this.loggedUser = this.authService.getLoggedUser();
     }
 
     logout() {

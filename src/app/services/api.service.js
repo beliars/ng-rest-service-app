@@ -2,30 +2,13 @@ export class ApiService {
     constructor($http) {
         'ngInject;'
         this.$http = $http;
+        this.mainUrl = 'http://smktesting.herokuapp.com/';
         this.apiUrl = 'http://smktesting.herokuapp.com/api/';
-
-        // this.config = {
-        //     headers : {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     }
-        // };
 
         this.loggedUser = {
             username: '',
             token: ''
         };
-    }
-
-    getLoggedUser() {
-        this.loggedUser = JSON.parse(localStorage.getItem('loggedUserData'));
-        if (this.loggedUser == null) {
-            return this.loggedUser = {
-                        username: '',
-                        token: ''
-                    };
-        }
-        else return this.loggedUser;
     }
 
     getProducts() {
@@ -52,37 +35,10 @@ export class ApiService {
         console.log('An error has occurred!', error);
         return Promise.reject(error.message || error);
     }
-
-    regUser(regData) {
-        regData.username = regData.username.trim();
-        let data = JSON.stringify(regData);
-        return this.$http.post(this.apiUrl + 'register/', data)
-        .then(res => {
-            this.loggedUser.username = regData.username;
-            this.loggedUser.token = res.data.token;
-            localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
-            return res;
-        })
-        .catch(this.handleError);
-    }
-
-    loginUser(loginData) {
-        loginData.username = loginData.username.trim();
-        let data = JSON.stringify(loginData);
-        return this.$http.post(this.apiUrl + 'login/', data)
-        .then(res => {
-            this.loggedUser.username = loginData.username;
-            this.loggedUser.token = res.data.token;
-            localStorage.setItem('loggedUserData', JSON.stringify(this.loggedUser));
-            return res;
-        })
-        .catch(this.handleError);
-    }
-
+    
     postComment(id, commentData, user) {
         commentData.text = commentData.text.trim();
         let data = JSON.stringify(commentData);
-        // this.config.headers.Authorization = 'Token ' + user.token;
         return this.$http.post(this.apiUrl + 'reviews/' + id, data)
             .then(res => res)
             .catch(this.handleError);

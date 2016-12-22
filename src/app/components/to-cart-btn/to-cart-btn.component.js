@@ -3,5 +3,8 @@ import './to-cart-btn.component.scss';
 
 export const ToCartBtnComponent = {
     template: require('./to-cart-btn.component.html'),
-    controller: ToCartBtnController
+    controller: ToCartBtnController,
+    bindings: {
+        selectedProduct: '<'
+    }
 };

@@ -46,7 +46,6 @@ products {
 
             li {
                 background-color: #ff5722;
-                max-height: 235px;
                 font-size: 16px;
                 color: #fff;
                 border-radius: 3px;
@@ -54,29 +53,31 @@ products {
                 text-align: center;
                 cursor: pointer;
                 text-transform: capitalize;
-                width: 150px;
+                width: 160px;
 
                 &:hover {
                     background-color: #ca451b;
                     @include shadow;
                 }
 
+                p {
+                    line-height: 30px;
+                    height: 30px;
+                    overflow: hidden;
+                }
+
                 .product-image-wrapper {
                     text-align: center;
-                    border: 1px solid transparent;
-                    border-radius: 2px;
-                    margin-bottom: 15px;
-                    background-color: #fff;
-                    -webkit-box-shadow: 1px 1px 10px 0px rgba(50, 50, 50, 0.4);
-                    -moz-box-shadow:    1px 1px 10px 0px rgba(50, 50, 50, 0.4);
-                    box-shadow:         1px 1px 10px 0px rgba(50, 50, 50, 0.4);
-                    max-width: 150px;
-                    height: 160px;
-                    margin: 15px;
+                    margin-top: 15px;
+                    width: 150px;
+                    height: 150px;
+
 
                     img {
                         display: inline-block;
-                        padding: 15px 20px;
+                        @include shadow;
+                        height: 120px;
+                        width: 90%;
                     }
                 }
             }

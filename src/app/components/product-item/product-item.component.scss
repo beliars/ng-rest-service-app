@@ -24,8 +24,8 @@ product-item {
 
             i.cart {
                 display: block;
-                margin: 0;
-                text-align: center;
+                width: 50%;
+                margin: 0 auto;;
                 font-size: 22px;
                 cursor: pointer;
             }
@@ -68,10 +68,6 @@ product-item {
             }
         }
 
-        .to-cart-wrapper {
-            text-align: right;
-        }
-
         .product-description {
 
             border: 1px solid transparent;
@@ -85,6 +81,7 @@ product-item {
                 font-size: 20px;
                 line-height: 30px;
                 padding-left: 20px;
+                word-wrap: break-word;
             }
         }
 
