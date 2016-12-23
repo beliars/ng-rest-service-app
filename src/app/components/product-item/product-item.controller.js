@@ -20,6 +20,8 @@ export default class ProductItemController {
         };
         this.authError = false;
 	    this.validateError = false;
+        this.showCartList = false;
+
     }
 
     $onInit() {
@@ -27,6 +29,7 @@ export default class ProductItemController {
         this.getProductData();
         this.getCommentsData();
         this.getProductsQuantity();
+
 
         this.$scope.$on('myTestEvent', (event, data) => {
             this.productsQuantity = data.length;
@@ -46,6 +49,7 @@ export default class ProductItemController {
         this.productService.getProducts().then(products => {
             let product = products.data.filter(product => product.id == this.$stateParams.id);
             this.selectedProduct = product[0];
+            console.log(this.selectedProduct.id);
         });
     }
 
@@ -91,6 +95,14 @@ export default class ProductItemController {
 
     goBack() {
         this.$state.go('products');
+    }
+
+    showModal() {
+        this.showCartList = true;
+    }
+
+    closeModal() {
+        this.showCartList = false;
     }
 
     logout() {

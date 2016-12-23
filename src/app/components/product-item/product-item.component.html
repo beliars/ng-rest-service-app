@@ -1,8 +1,9 @@
 <div class="container">
     <p ng-if="$ctrl.loggedUser.username" class="logged-user">Hello, {{ $ctrl.loggedUser.username }}
         <i class="logout fa fa-sign-out" title="Logout" ng-click="$ctrl.logout()"></i>
-        <i class="cart fa fa-shopping-cart"><span ng-if="$ctrl.productsQuantity">({{$ctrl.productsQuantity}})</span></i>
+        <i class="cart fa fa-shopping-cart" ng-click="$ctrl.showModal()"><span ng-if="$ctrl.productsQuantity">({{$ctrl.productsQuantity}})</span></i>
     </p>
+    <cart-list ng-if="$ctrl.showCartList" on-close="$ctrl.closeModal()"></cart-list>
     <div class="row">
         <div class="col-sm-6">
             <h3>{{ $ctrl.selectedProduct.title }}</h3>

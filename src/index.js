@@ -8,6 +8,7 @@ import { AuthComponent } from './app/components/auth/auth.component';
 import { ProductsComponent } from './app/components/products/products.component';
 import { ProductItemComponent } from './app/components/product-item/product-item.component';
 import { ToCartBtnComponent } from './app/components/to-cart-btn/to-cart-btn.component';
+import { CartListComponent } from './app/components/cart-list/cart-list.component';
 
 import { myInterceptor } from './interceptors';
 
@@ -27,6 +28,7 @@ angular
   .component('products', ProductsComponent)
   .component('productItem', ProductItemComponent)
   .component('toCartBtn', ToCartBtnComponent)
+  .component('cartList', CartListComponent)
   .factory('myInterceptor', myInterceptor)
   .config(routesConfig)
   .config(function($httpProvider) {
