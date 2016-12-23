@@ -49,6 +49,7 @@ export class AuthService {
 
     clearUserData() {
         localStorage.removeItem('loggedUserData');
+        localStorage.removeItem('cartProductsListData');
     }
 
     handleError(error) {

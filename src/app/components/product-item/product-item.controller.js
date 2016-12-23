@@ -1,17 +1,19 @@
 import { AuthService } from '../../services/auth.service';
-import { ApiService } from '../../services/api.service';
+import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 
 export default class ProductItemController {
 
-    constructor(AuthService, ApiService, CartService, $state, $stateParams) {
+    constructor($state, $stateParams, $scope, $rootScope, AuthService, ProductService, CartService) {
         "ngInject";
         this.authService = AuthService;
-        this.apiService = ApiService;
+        this.productService = ProductService;
         this.cartService = CartService;
         this.$state = $state;
+        this.$scope = $scope;
+        this.$rootScope = $rootScope;
         this.$stateParams = $stateParams;
-        this.imgUrl = this.apiService.mainUrl + '/static/';
+        this.imgUrl = this.productService.mainUrl + '/static/';
         this.commentData = {
             rate: '',
             text: ''
@@ -24,12 +26,15 @@ export default class ProductItemController {
         this.getLoggedUserData();
         this.getProductData();
         this.getCommentsData();
+        this.getProductsQuantity();
+
+        this.$scope.$on('myTestEvent', (event, data) => {
+            this.productsQuantity = data.length;
+        });
     }
 
-    $onChanges() {
-        console.log('$onChanges');
+    getProductsQuantity() {
         this.getCartProductsListData();
-        console.log(this.productsList.length);
         this.productsQuantity = this.productsList.length;
     }
 
@@ -38,14 +43,14 @@ export default class ProductItemController {
     }
 
     getProductData() {
-        this.apiService.getProducts().then(products => {
+        this.productService.getProducts().then(products => {
             let product = products.data.filter(product => product.id == this.$stateParams.id);
             this.selectedProduct = product[0];
         });
     }
 
     getCommentsData() {
-        this.apiService.getComments(this.$stateParams.id).then(comments => {
+        this.productService.getComments(this.$stateParams.id).then(comments => {
             this.comments = comments.data;
         });
     }
@@ -66,7 +71,7 @@ export default class ProductItemController {
         }
 
         if (form.$valid) {
-            this.apiService.postComment(this.selectedProduct.id, this.commentData, this.loggedUser)
+            this.productService.postComment(this.selectedProduct.id, this.commentData, this.loggedUser)
             .then(resultData => {
                 if (resultData.data.success) {
                     this.comments.push({

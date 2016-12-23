@@ -1,14 +1,17 @@
-import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
-export default class UserDetailController {
+export default class ProductsController {
 
-    constructor(ApiService, AuthService, $state, $stateParams) {
+    constructor($state, $stateParams, $scope, AuthService, ProductService, CartService) {
         "ngInject";
-        this.apiService = ApiService;
         this.authService = AuthService;
+        this.productService = ProductService;
+        this.cartService = CartService;
         this.$state = $state;
-        this.imgUrl = this.apiService.mainUrl + '/static/';
+        this.$scope = $scope;
+        this.imgUrl = this.productService.mainUrl + '/static/';
         this.loggedUser = {
             username: '',
             token: ''
@@ -18,6 +21,20 @@ export default class UserDetailController {
     $onInit() {
         this.getProductsData();
         this.getLoggedUserData();
+        this.getProductsQuantity();
+
+        this.$scope.$on('myTestEvent', (event, data) => {
+            this.productsQuantity = data.length;
+        });
+    }
+
+    getProductsQuantity() {
+        this.getCartProductsListData();
+        this.productsQuantity = this.productsList.length;
+    }
+
+    getCartProductsListData() {
+        this.productsList = this.cartService.getCartProductsList();
     }
 
     selectProduct(product) {
@@ -30,7 +47,7 @@ export default class UserDetailController {
     }
 
     getProductsData() {
-        this.apiService.getProducts().then(products => {
+        this.productService.getProducts().then(products => {
             this.products = products.data;
         });
     }
@@ -41,7 +58,7 @@ export default class UserDetailController {
 
     logout() {
         setTimeout(() => {
-            this.apiService.clearUserData();
+            this.authService.clearUserData();
             this.$state.go('auth');
         }, 500);
     }

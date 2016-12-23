@@ -2,7 +2,7 @@
 	<div class="container">
 		<p ng-if="$ctrl.loggedUser.username" class="logged-user">Hello, {{ $ctrl.loggedUser.username }}
 			<i class="logout fa fa-sign-out" title="Logout" ng-click="$ctrl.logout()"></i>
-			<i class="cart fa fa-shopping-cart"><span></span></i>
+			<i class="cart fa fa-shopping-cart"><span ng-if="$ctrl.productsQuantity">({{$ctrl.productsQuantity}})</span></i>
 		</p>
 		<ul class="products list-inline">
 			<li ng-repeat="product in $ctrl.products" ng-click="$ctrl.selectProduct(product)"

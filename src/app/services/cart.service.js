@@ -1,12 +1,14 @@
 export class CartService {
-    constructor($http) {
+    constructor($http, $rootScope) {
         'ngInject;'
+        this.$rootScope = $rootScope;
     }
 
     addToCart(product) {
         this.getCartProductsList();
         this.productsList.push(product);
         localStorage.setItem('cartProductsListData', JSON.stringify(this.productsList));
+        this.$rootScope.$broadcast('myTestEvent', this.productsList);
 
     }
 

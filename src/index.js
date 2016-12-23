@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 import { AuthService } from './app/services/auth.service';
-import { ApiService } from './app/services/api.service';
+import { ProductService } from './app/services/product.service';
 import { CartService } from './app/services/cart.service';
 import { AppComponent } from './app/components/app.component';
 import { AuthComponent } from './app/components/auth/auth.component';
@@ -20,7 +20,7 @@ import './index.scss';
 angular
   .module('products-app', ['ui.router'])
   .service('AuthService', AuthService)
-  .service('ApiService', ApiService)
+  .service('ProductService', ProductService)
   .service('CartService', CartService)
   .component('restApp', AppComponent)
   .component('auth', AuthComponent)

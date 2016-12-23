@@ -1,4 +1,4 @@
-import { ApiService } from './app/services/auth.service';
+import { AuthService } from './app/services/auth.service';
 
 export function myInterceptor($injector) {
     return {
