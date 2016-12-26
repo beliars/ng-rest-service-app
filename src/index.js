@@ -9,8 +9,9 @@ import { ProductsComponent } from './app/components/products/products.component'
 import { ProductItemComponent } from './app/components/product-item/product-item.component';
 import { ToCartBtnComponent } from './app/components/to-cart-btn/to-cart-btn.component';
 import { CartListComponent } from './app/components/cart-list/cart-list.component';
-
 import { myInterceptor } from './interceptors';
+
+import _ from 'lodash';
 
 import 'angular-ui-router';
 import routesConfig from './routes';

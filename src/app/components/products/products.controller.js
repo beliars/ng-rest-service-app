@@ -15,22 +15,25 @@ export default class ProductsController {
         this.loggedUser = {
             username: '',
             token: ''
-        }
+        };
+        this.showCartList = false;
     }
 
     $onInit() {
         this.getProductsData();
         this.getLoggedUserData();
-        this.getProductsQuantity();
+        this.getOrders();
 
         this.$scope.$on('myTestEvent', (event, data) => {
-            this.productsQuantity = data.length;
+            let summ = _.sumBy(data, 'count');
+            this.productsQuantity = summ;
         });
     }
 
-    getProductsQuantity() {
+    getOrders() {
         this.getCartProductsListData();
-        this.productsQuantity = this.productsList.length;
+        let summ = _.sumBy(this.productsList, 'count');
+        this.productsQuantity = summ;
     }
 
     getCartProductsListData() {
@@ -54,6 +57,14 @@ export default class ProductsController {
 
     getLoggedUserData() {
         this.loggedUser = this.authService.getLoggedUser();
+    }
+
+    showModal() {
+        this.showCartList = true;
+    }
+
+    closeModal() {
+        this.showCartList = false;
     }
 
     logout() {

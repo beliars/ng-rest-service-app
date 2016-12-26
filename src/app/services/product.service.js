@@ -13,7 +13,14 @@ export class ProductService {
 
     getProducts() {
         return this.$http.get(this.apiUrl + 'products/')
-        .then(res => res)
+        .then(res => {
+            console.log(res.data);
+            _.each(res.data, (item, i) => {
+                res.data[i].price = item.id*123;
+            });
+            console.log(res.data);
+            return res;
+        })
         .catch(this.handleError);
     }
 

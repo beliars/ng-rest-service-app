@@ -2,17 +2,31 @@
     <div class="cart-list-content">
         <span ng-click="$ctrl.onClose()" class="close">&times;</span>
         <div class="products">
-            <div ng-repeat="product in $ctrl.products">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="img-wrapper">
-                            <img ng-src="{{$ctrl.imgUrl}}{{product.img}}" class="img-responsive" alt="">
-                        </div>
+            <div class="row" ng-repeat="product in $ctrl.products">
+                <div class="left-side col-xs-4">
+                    <h3>{{ product.title }}</h3>
+                    <div class="img-wrapper">
+                        <img ng-src="{{ $ctrl.imgUrl }}{{ product.img }}" class="img-responsive" alt="">
                     </div>
-                    <div class="col-xs-8"></div>
+                </div>
+                <div class="rigth-side col-xs-8">
+                    <p>{{ product.text }}</p>
+                    <div class="quantity">
+                        <span class="price">Price: ${{ product.price }}</span>
+                        <i class="fa fa-minus" aria-hidden="true" ng-click="$ctrl.minusProduct(product.id)"></i>
+                        <input type="text" class="form-control" ng-model="product.count" maxlength="2">
+                        <i class="fa fa-plus" aria-hidden="true" ng-click="$ctrl.plusProduct(product.id)"></i>
+                    </div>
                 </div>
             </div>
         </div>
+    <p class="notice" ng-if="$ctrl.notice">You have no products in cart.</p>
+    <div class="totalPrice">
+        <span>Total price: ${{$ctrl.totalPrice}}</span>
+    </div>
+    <div class="checkout">
+        <button type="submit" class="btn btn-success" ng-if="!$ctrl.notice" ng-click="$ctrl.checkout()">Checkout</button>
+    </div>
     </div>
     <div ng-click="$ctrl.onClose()" class="cart-list-bg"></div>
 </div>

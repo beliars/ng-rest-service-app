@@ -35,4 +35,9 @@ export class CartService {
         else return this.productsList;
     }
 
+    cleanOutCart() {
+        localStorage.removeItem('cartProductsListData');
+        this.productsList = [];
+        this.$rootScope.$broadcast('myTestEvent', this.productsList);
+    }
 }

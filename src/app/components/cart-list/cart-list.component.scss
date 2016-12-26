@@ -13,13 +13,69 @@
         background-color: #fefefe;
         margin: 10% auto;
         padding: 20px;
-        border: 1px solid #888;
+        // border: 1px solid #888;
         width: 60%;
-        border: 3px solid #ccc;
+        border: 3px solid #3F51B5;
 
-        p {
-            color: #444;
+
+        .notice {
+
             font-size: 20px;
+            text-align: center;
+        }
+
+        .checkout {
+            text-align: right;
+        }
+
+        .totalPrice {
+            text-align: right;
+            margin-right: 25px;
+            font-size: 22px;
+            margin-right: 50px;
+            margin-top: 10px;
+        }
+
+        .products {
+
+            .row {
+                margin-bottom: 30px;
+
+                .quantity {
+                    text-align: center;
+                    margin-top: 40px;
+
+                    input {
+                        display: inline-block;
+                        width: 42px;
+                        text-align: center;
+                    }
+
+                    i {
+                        vertical-align: middle;
+                        cursor: pointer;
+                    }
+
+                    .price {
+                        margin-right: 40px;
+                        font-size: 20px;
+                    }
+
+                }
+
+                p {
+                    font-size: 20px;
+                    text-transform: capitalize;
+                }
+            }
+
+            .row:not(:first-child) {
+
+                .rigth-side {
+                    margin-top: 20px;
+                }
+            }
+
         }
     }
 }
