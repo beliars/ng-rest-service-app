@@ -2,18 +2,19 @@ import { CartService } from '../../services/cart.service';
 
 export default class ToCartBtnController {
 
-    constructor(CartService) {
+    constructor($rootScope, CartService) {
         "ngInject";
         this.cartService = CartService;
-        console.log(this.selectedProduct);
+        this.productOrdered = false;
+        this.$rootScope = $rootScope;
     }
 
     $onInit() {
+
     }
 
     addDataToCart() {
-        console.log(this.selectedProduct);
         this.cartService.addToCart(this.selectedProduct);
-
+        this.$rootScope.$broadcast('addToCartEvent', this.orderedProduct);
     }
 }

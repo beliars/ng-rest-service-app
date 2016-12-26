@@ -21,31 +21,24 @@ export default class ProductItemController {
         this.authError = false;
 	    this.validateError = false;
         this.showCartList = false;
-
+        this.orderedProduct = false;
     }
 
     $onInit() {
         this.getLoggedUserData();
         this.getProductData();
         this.getCommentsData();
-        this.getOrders();
+        this.getCartProductsListData();
 
 
         this.$scope.$on('myTestEvent', (event, data) => {
             let summ = _.sumBy(data, 'count');
             this.productsQuantity = summ;
         });
-    }
 
-    getOrders() {
-        this.getCartProductsListData();
-        console.log(this.productsList);
-        // _.filter(this.productsList, (item) => item.id > 0);
-        // let summ = 0;
-        // _.each(this.productsList, (item) => summ = summ + item.count);
-        // this.productsQuantity = summ;
-        let summ = _.sumBy(this.productsList, 'count');
-        this.productsQuantity = summ;
+        this.$scope.$on('addToCartEvent', (event, data) => {
+            this.getCartProductsListData();
+        });
     }
 
     getLoggedUserData() {
@@ -67,6 +60,13 @@ export default class ProductItemController {
 
     getCartProductsListData() {
         this.productsList = this.cartService.getCartProductsList();
+        let summ = _.sumBy(this.productsList, 'count');
+        this.productsQuantity = summ;
+
+        _.each(this.productsList, (item) => {
+            if(item.id == this.$stateParams.id) this.orderedProduct = true;
+        });
+
     }
 
     onSubmit(form) {

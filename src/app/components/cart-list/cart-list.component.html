@@ -14,7 +14,7 @@
                     <div class="quantity">
                         <span class="price">Price: ${{ product.price }}</span>
                         <i class="fa fa-minus" aria-hidden="true" ng-click="$ctrl.minusProduct(product.id)"></i>
-                        <input type="text" class="form-control" ng-model="product.count" maxlength="2">
+                        <input type="text" class="form-control" ng-change="$ctrl.onChange(product)" ng-model="product.count" maxlength="2">
                         <i class="fa fa-plus" aria-hidden="true" ng-click="$ctrl.plusProduct(product.id)"></i>
                     </div>
                 </div>

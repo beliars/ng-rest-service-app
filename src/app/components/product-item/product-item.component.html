@@ -9,8 +9,9 @@
             <h3>{{ $ctrl.selectedProduct.title }}</h3>
             <div class="product-image-wrapper">
                 <img ng-src="{{$ctrl.imgUrl}}{{$ctrl.selectedProduct.img}}" class="img-responsive" alt="">
+                <p class="price">Price: ${{ $ctrl.selectedProduct.price }}</p>
             </div>
-            <to-cart-btn selected-product="$ctrl.selectedProduct"></to-cart-btn>
+            <to-cart-btn selected-product="$ctrl.selectedProduct" ordered-product="$ctrl.orderedProduct"></to-cart-btn>
             <h3>Product description</h3>
             <div class="product-description">
                 <p>{{ $ctrl.selectedProduct.text }}</p>

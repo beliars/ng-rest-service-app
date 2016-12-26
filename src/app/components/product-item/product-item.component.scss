@@ -71,6 +71,13 @@ product-item {
                 display: inline-block;
                 padding: 25px;
             }
+
+            .price {
+                text-align: right;
+                margin-right: 30px;
+                font-size: 22px;
+            }
+
         }
 
         .product-description {

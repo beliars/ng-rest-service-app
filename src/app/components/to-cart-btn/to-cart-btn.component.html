@@ -1,2 +1,2 @@
-<button type="button" class="btn btn-success" ng-if="!$ctrl.ordered" ng-click="$ctrl.addDataToCart()">Add to cart</button>
-<button type="button" class="btn btn-success" ng-if="$ctrl.ordered" disabled>Product ordered</button>
+<button type="button" class="btn btn-success" ng-if="!$ctrl.orderedProduct" ng-click="$ctrl.addDataToCart()">Add to cart</button>
+<button type="button" class="btn btn-success" ng-if="$ctrl.orderedProduct" disabled>Product ordered</button>

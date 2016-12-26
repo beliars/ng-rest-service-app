@@ -3,10 +3,11 @@ import { ProductService } from '../../services/product.service';
 
 export default class CartListController {
 
-    constructor(CartService, ProductService) {
+    constructor($rootScope, CartService, ProductService) {
         "ngInject";
         this.cartService = CartService;
         this.productService = ProductService;
+        this.$rootScope = $rootScope;
         this.imgUrl = this.productService.mainUrl + '/static/';
         this.notice = false;
     }
@@ -25,6 +26,7 @@ export default class CartListController {
             };
         });
         this.getTotalPrice();
+        this.$rootScope.$broadcast('myTestEvent', this.products);
     }
 
     minusProduct(id) {
@@ -32,18 +34,26 @@ export default class CartListController {
             if(item.id == id && this.products[i].count > 0) this.products[i].count--;
         });
         this.getTotalPrice();
+        this.$rootScope.$broadcast('myTestEvent', this.products);
+    }
+
+    onChange(product) {
+        _.map(this.products, (item, i) => {
+            if(item.id == product.id && this.products[i].count > 0) this.products[i].count = +product.count;
+        });
+        this.getTotalPrice();
+        this.$rootScope.$broadcast('myTestEvent', this.products);
     }
 
     checkout() {
-        this.cartService.cleanOutCart();
-        alert('Your order was successful!');
-        this.onClose();
+        // this.cartService.cleanOutCart();
+        // alert('Your order was successful!');
+        // this.onClose();
     }
 
 
     getCartProductsListData() {
         this.products = this.cartService.getCartProductsList();
-        console.log(this.products);
     }
 
     getTotalPrice() {
@@ -51,7 +61,6 @@ export default class CartListController {
         _.each(this.products, (item, i) => {
             this.totalPrice = this.totalPrice + (item.price * item.count);
         });
-
     }
 
 }
